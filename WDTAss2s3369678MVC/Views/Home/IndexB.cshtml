@@ -1,0 +1,68 @@
+﻿@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+@{
+    ViewBag.Title = "Whiz-bang!";
+    }
+
+
+
+
+<script>
+
+
+    
+    $(function () {
+
+        $("#target").submit(function (event) {
+             
+            //alert($("#categories option:selected").text());
+            
+            var url = "/HelloWorld/GetText";
+            $.get(url, null, function (data) {
+
+
+
+                /*
+                bootbox.alert("asd", function () {
+
+                });
+                */
+           //    alert(data);
+                //$("#result").append(data);
+    
+            });
+        
+        });
+
+    });
+    
+</script>
+
+
+    
+ 
+
+@{
+AjaxOptions options = new AjaxOptions();
+options.HttpMethod = "POST";
+options.Confirm = "Do you wish to submit this form?";
+options.UpdateTargetId = "result";
+options.InsertionMode = InsertionMode.InsertAfter;
+
+
+}
+
+
+
+@using (Ajax.BeginForm("GetText", "HelloWorld", options))
+{
+
+    // @Html.Raw(ViewBag.selectOpts)
+
+
+    <select name='categories'><option value='volvo'>Volvo</option><option value='saab'>Saab</option></select>
+    <input type="submit" value="Submit" />
+} 
+
