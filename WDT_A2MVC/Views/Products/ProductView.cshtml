@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Html.Raw(ViewBag.product.Title)</h1>
+
+<table>
+    <tr>
+        <td>Product Name:</td>
+        <td>@ViewBag.product.Title</td>
+    </tr>
+    <tr>
+        <td>Category:</td>
+        <td>@ViewBag.product.Category.Title</td>
+    </tr>
+    <tr>
+        <td>Street:</td>
+        <td>@ViewBag.product.LongDescription</td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td>@ViewBag.product.Price</td>
+    </tr>
+    <tr>
+        <td>Number in Stock:</td>
+        <td>@ViewBag.product.Quantity</td>
+    </tr>
+    <tr>
+        <td><img src="@ViewBag.product.ImageUrl" alt="Image of @ViewBag.product.Title" /></td>
+    </tr>
+</table>

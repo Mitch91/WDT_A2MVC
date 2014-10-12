@@ -71,6 +71,8 @@ C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\Mic
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\Microsoft.Owin.Security.Twitter.dll
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\MvcSiteMapProvider.dll
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\MvcSiteMapProvider.WebActivator.dll
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\Newtonsoft.Json.dll
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\Owin.dll
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\System.Web.Helpers.dll
@@ -80,7 +82,10 @@ C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\Sys
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\System.Web.WebPages.dll
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\WebActivatorEx.dll
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\WebGrease.dll
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\MvcSiteMapProvider.xml
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\MvcSiteMapProvider.WebActivator.xml
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\System.Web.Helpers.xml
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\System.Web.Mvc.xml
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\WDT_A2MVC\WDT_A2MVC\bin\System.Web.Optimization.xml

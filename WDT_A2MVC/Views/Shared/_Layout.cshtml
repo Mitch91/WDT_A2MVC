@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using WDT_A2MVC.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -62,16 +63,25 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                @Html.ActionLink("Whiz-bang!", "Index", "Home", new { @class = "navbar-brand" })
+                @(Html.ActionLink("Whiz-bang!", "Index", "Products", new { }, new { @class = "navbar-brand" }))
 
             </div>
             <div class="navbar-collapse collapse">
            
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li>@Html.ActionLink("Register", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Logout", "Index", "Home")</li>
+                    <li>@Html.ActionLink("View Cart", "Index", "Cart")</li>
+                    @if (Object.Equals(Session["User"],null) || !((User) Session["User"]).loggedIn)
+                    {
+                        <li>@Html.ActionLink("Register", "Index", "Register")</li>
+                        <li>@Html.ActionLink("Login", "LogIn", "Users")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink(((User) Session["User"]).Username + "'s Details", "Index", "Users")</li>
+                        <li>@Html.ActionLink("Logout", "LogOut", "Users")</li>
+                    }
+                    <li>@Html.ActionLink("Site Map", "Index", "Sitemap")</li>
 
                 </ul>
 

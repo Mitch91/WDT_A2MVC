@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
 namespace WDT_A2MVC.Models
 {
-    public class DatabaseSystem
+    public class DatabaseSystem : IProductContainer
     {
         private static DatabaseSystem ds;
 
@@ -25,21 +26,22 @@ namespace WDT_A2MVC.Models
         public User AuthenticateUser(String userName, String password)
         {
             User u = GetUserForId(userName);
-            if (VerifyPassword(u.PasswordHash, /*SomeHashAlgorithm*/password))
+            if (VerifyPassword(u.Password, password)){
+                u.loggedIn = true;
                 return u;
+            }
             else
                 return null;
         }
 
         public User GetUserForId(String userName)
         {
-            return (from user in dataBaseEntities.Users
-                    where user.Username == userName
-                    select user).ElementAt(0);
+            return dataBaseEntities.Users.
+                FirstOrDefault(u => u.Username == userName);
         }
 
-        public Boolean VerifyPassword(String userPasswordHash, String inputHash){
-            return String.Equals(userPasswordHash, inputHash);
+        public Boolean VerifyPassword(String password, String inputpassword){
+            return String.Equals(password, inputpassword);
         }
 
         public List<Product> GetProductsForCategory(int categoryId = -1)
@@ -61,9 +63,8 @@ namespace WDT_A2MVC.Models
         }
 
         public Category GetCategoryForId(int categoryId){
-            return (from c in dataBaseEntities.Categories
-                    where c.CategoryID == categoryId
-                    select c).ElementAt(0);
+            return dataBaseEntities.Categories.
+                FirstOrDefault(c => c.CategoryID == categoryId);
         }
 
         public Category GetCategoryOfProduct(int productId)
@@ -73,14 +74,66 @@ namespace WDT_A2MVC.Models
 
         public Product GetProductForId(int productId)
         {
-            IQueryable<Product> product = from p in dataBaseEntities.Products
-                           where p.ProductID == productId
-                           select p;
+            return dataBaseEntities.Products.
+                FirstOrDefault(p => p.ProductID == productId);
+        }
 
-            foreach (Product p in product)
-                return p;
+        public Boolean RegisterUser(User u)
+        {
+            try
+            {
+                dataBaseEntities.Users.Add(u);
+                dataBaseEntities.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }            
+        }
 
-            return null;
+        public Boolean Remove(int id, int quantity)
+        {
+            Product product = dataBaseEntities.Products.
+                FirstOrDefault(p => p.ProductID == id);
+
+            if (Object.Equals(product, null) || product.Quantity < quantity)
+                return false;
+
+            product.Quantity -= quantity;
+            
+            try
+            {
+                dataBaseEntities.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            
+        }
+
+        public Boolean Add(int id, int quantity)
+        {
+            Product product = dataBaseEntities.Products.
+                FirstOrDefault(p => p.ProductID == id);
+            
+            if (Object.Equals(product, null))
+                return false;
+
+            product.Quantity += quantity;
+
+            try
+            {
+                dataBaseEntities.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

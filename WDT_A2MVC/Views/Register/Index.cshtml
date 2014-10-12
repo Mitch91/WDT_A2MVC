@@ -1,0 +1,59 @@
+﻿@model WDT_A2MVC.Models.User
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+<h4 style="color:red">@ViewBag.error</h4>
+@using (Html.BeginForm("Register", "Register"))
+{
+    <table id="table table-condensed table-bordered table-striped table-hover">
+        <tr>
+            <td>Username:</td>
+            <td>@Html.EditorFor(m => m.Username)</td>
+        </tr>
+        <tr>
+            <td>Firstname:</td>
+            <td>@Html.EditorFor(m => m.Firstname)</td>
+        </tr>
+        <tr>
+            <td>Lastname:</td>
+            <td>@Html.EditorFor(m => m.Lastname)</td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>@Html.PasswordFor(m => m.Password)</td>
+        </tr>
+        <tr>
+            <td>Street:</td>
+            <td>@Html.EditorFor(m => m.Street)</td>
+        </tr>
+        <tr>
+            <td>Suburb:</td>
+            <td>@Html.EditorFor(m => m.Suburb)</td>
+        </tr>
+        <tr>
+            <td>Postcode:</td>
+            <td>@Html.EditorFor(m => m.Postcode)</td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td>
+                @Html.DropDownListFor(m => m.State, new List<SelectListItem>{
+                new SelectListItem{Value = "NSW", Text = "NSW"},
+                new SelectListItem{Value = "QLD",Text = "QLD"},
+                new SelectListItem{Value = "SA",Text = "SA"},
+                new SelectListItem{Value = "TAS",Text = "TAS"},
+                new SelectListItem{Value = "VIC",Text = "VIC"},
+                new SelectListItem{Value = "WA",Text = "WA"},
+                new SelectListItem{Value = "NT",Text = "NT"}})
+        </td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td><input class="submit" type="submit" value="Register" /></td>
+    </tr>
+</table>
+}

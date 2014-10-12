@@ -1,0 +1,34 @@
+﻿@using WDT_A2MVC.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "User Details";
+}
+
+<h1>@(((User) Session["User"]).Username)</h1>
+
+<table>
+    <tr>
+        <td>First Name:</td>
+        <td>@(((User)Session["User"]).Firstname)</td>
+    </tr>
+    <tr>
+        <td>Last Name:</td>
+        <td>@(((User)Session["User"]).Lastname)</td>
+    </tr>
+    <tr>
+        <td>Street:</td>
+        <td>@(((User)Session["User"]).Street)</td>
+    </tr>
+    <tr>
+        <td>Suburb:</td>
+        <td>@(((User)Session["User"]).Suburb)</td>
+    </tr>
+    <tr>
+        <td>Postcode:</td>
+        <td>@(((User)Session["User"]).Postcode)</td>
+    </tr>
+    <tr>
+        <td>State:</td>
+        <td>@(((User)Session["User"]).State)</td>
+    </tr>
+</table>

@@ -1,0 +1,86 @@
+﻿@model WDT_A2MVC.Models.User
+@using WDT_A2MVC.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Checkout";
+}
+
+<script>
+    function validate() {
+        var ccnumber = document.getElementById("submit").value;
+        var valid;
+
+        
+        for (sum = 0, i = 0; i < strlen(ccnumber); i += 2) {
+            digit = ccnumber.charAt(i);
+            sum += digit;
+            if(i <= strlen(ccnumber)){
+                digit = ccnumber.charAt(i + 1);
+                digit *= 2;
+                if(digit > 9)
+                    sum += digit - 9;
+                else 
+                    sum += digit;
+            }
+        }
+        valid = ((sum % 10) === 0);
+
+        if (!valid) {
+            document.getElementById("errormsg").innerHTML("Invalid Credit card number");
+        } else {
+            window.navigate("/Checkout/Summary");
+        }
+    }
+</script>
+
+@using (Html.BeginForm("Index", "Checkout"))
+{
+    <table class="table table-condensed table-bordered table-striped table-hover">
+        <tr>
+            <td rowspan="2">Shipping Details</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Firstname:</td>
+            <td>@Html.TextBox("firstname", ((User)Session["User"]).Postcode)</td>
+        </tr>
+        <tr>
+            <td>Lastname:</td>
+            <td>@Html.TextBox("lastname", ((User)Session["User"]).Postcode)</td>
+        </tr>
+        <tr>
+            <td>Street:</td>
+            <td>@Html.TextBox("street", ((User)Session["User"]).Postcode)</td>
+        </tr>
+        <tr>
+            <td>Suburb:</td>
+            <td>@Html.TextBox("suburb", ((User)Session["User"]).Postcode)</td>
+        </tr>
+        <tr>
+            <td>Postcode:</td>
+            <td>@Html.TextBox("postcode", ((User)Session["User"]).Postcode)</td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td>
+                @Html.DropDownList("state", new List<SelectListItem>{
+                new SelectListItem{Value = "NSW", Text = "NSW"},
+                new SelectListItem{Value = "QLD",Text = "QLD"},
+                new SelectListItem{Value = "SA",Text = "SA"},
+                new SelectListItem{Value = "TAS",Text = "TAS"},
+                new SelectListItem{Value = "VIC",Text = "VIC"},
+                new SelectListItem{Value = "WA",Text = "WA"},
+                new SelectListItem{Value = "NT",Text = "NT"}})
+            </td>
+        </tr>
+        <tr>
+            <td>Credit Card Number:</td>
+            <td>@Html.TextBox("ccnumber")</td>
+            <td><span id="errormsg" style="color:red">@ViewBag.error</span></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td><button id="submit" onclick="validate()">Checkout</button></td>
+        </tr>
+    </table>
+}

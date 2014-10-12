@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Log In";
+}
+
+<h1>Login</h1>
+
+<h4 style="color:red;">@ViewBag.error</h4>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Username: </td>
+            <td>@Html.Editor("username")</td>
+        </tr>
+        <tr>
+            <td>Password: </td>
+            <td>@Html.Password("password")</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input class="submit" type="submit" value="Login" /></td>
+        </tr>
+    </table>
+}

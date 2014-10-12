@@ -31,7 +31,7 @@
             <PropertyRef Name="Username" />
           </Key>
           <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Firstname" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Lastname" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Street" Type="varchar(max)" Nullable="false" />
@@ -93,7 +93,7 @@
             <PropertyRef Name="Username" />
           </Key>
           <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Firstname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Lastname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -155,7 +155,7 @@
             <EntityTypeMapping TypeName="WDT_A2MVC.Models.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Firstname" ColumnName="Firstname" />
                 <ScalarProperty Name="Lastname" ColumnName="Lastname" />
                 <ScalarProperty Name="Street" ColumnName="Street" />

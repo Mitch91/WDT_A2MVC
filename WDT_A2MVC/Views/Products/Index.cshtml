@@ -1,5 +1,76 @@
-﻿@{
+﻿@using WDT_A2MVC.Models
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Raw(ViewBag.table)
+@* Some reason the boot box posts all the way to the right *@
+<script>
+    var table = $('#table_id').DataTable();
+    $(function () {
+        $('#table_id').on('click', 'i.add', function (e) {
+            var id = $(this).closest('tr').data('product_id');
+            var selected = $('#quantity' + id).val();
+            $.post('/Cart/Add', { id: id, quantity: selected }, function (result) {
+                bootbox.alert(result, function () { window.location.reload() });
+            });
+        });
+    });
+</script>
+
+@if(!Object.Equals(Session["User"], null) && ((User)Session["User"]).loggedIn){ 
+    <h3>Hello @(((User) Session["User"]).Firstname)!</h3>
+}
+
+@using (Html.BeginForm("ViewCategory", "Products"))
+{ 
+    @Html.DropDownList("category", (List<SelectListItem>) ViewBag.categories)
+    <input class="submit" type="submit" value="Search" />
+}
+
+<table id="table_id" class="table table-condensed table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Short Description</th>
+            <th>Price</th>
+            <th>Quantity Available</th>
+            <th>Quantity to Buy</th>
+            <th width="50">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (Product product in (List<Product>)ViewBag.products)
+        {
+            String categoryTitle = DatabaseSystem.GetInstance().GetCategoryOfProduct(product.ProductID).Title;
+        
+            <tr data-product_id = @product.ProductID>
+                <td><a href="/Products/ProductView/@product.ProductID">@product.Title</a></td>
+                <td>@categoryTitle</td>
+                <td>@product.ShortDescription</td>
+                <td>@product.Price.ToString("c2")</td>
+                <td>@product.Quantity</td>
+                <td>@Html.DropDownList("quantity" + product.ProductID, 
+                        new List<SelectListItem>{
+                        new SelectListItem { Value = "1" , Text = "1"},
+                        new SelectListItem { Value = "2" , Text = "2"},
+                        new SelectListItem { Value = "3" , Text = "3"},
+                        new SelectListItem { Value = "4" , Text = "4"},
+                        new SelectListItem { Value = "5" , Text = "5"},
+                        new SelectListItem { Value = "6" , Text = "6"},
+                        new SelectListItem { Value = "7" , Text = "7"},
+                        new SelectListItem { Value = "8" , Text = "8"},
+                        new SelectListItem { Value = "9" , Text = "9"},
+                        new SelectListItem { Value = "10" , Text = "10"}
+                    })
+                </td>
+                <td>
+                    <span style="cursor:pointer">
+                        <i class="fa fa-shopping-cart fa-2x add"></i>
+                    </span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

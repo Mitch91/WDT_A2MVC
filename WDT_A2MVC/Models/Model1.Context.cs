@@ -7,12 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WDT_A2MVC
+namespace WDT_A2MVC.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using WDT_A2MVC.Models;
     
     public partial class DBEntities : DbContext
     {

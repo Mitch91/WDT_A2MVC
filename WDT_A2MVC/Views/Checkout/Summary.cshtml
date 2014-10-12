@@ -1,0 +1,63 @@
+﻿@using WDT_A2MVC.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Checkout";
+}
+
+
+<h1>Products Bought</h1>
+<table id="table table-condensed table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Short Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    @foreach(Product p in ViewBag.cartContents){
+        <tr>
+            <td>@p.Title</td>
+            <td>@DatabaseSystem.GetInstance().GetCategoryOfProduct(p.ProductID).Title</td>
+            <td>@p.ShortDescription</td>
+            <td>@p.Price</td>
+            <td>@p.Quantity</td>
+        </tr>
+    }
+</table>
+
+<h1>Shipping Details</h1>
+
+<table>
+    <tr>
+        <td>Firstname: </td>
+        <td>@ViewBag.Firstname</td>
+    </tr>
+    <tr>
+        <td>Lastname: </td>
+        <td>@ViewBag.Lastname</td>
+    </tr>
+    <tr>
+        <td>Street: </td>
+        <td>@ViewBag.Street</td>
+    </tr>
+    <tr>
+        <td>Suburb: </td>
+        <td>@ViewBag.Suburb</td>
+    </tr>
+    <tr>
+        <td>State: </td>
+        <td>@ViewBag.State</td>
+    </tr>
+    <tr>
+        <td>Postcode: </td>
+        <td>@ViewBag.Postcode</td>
+    </tr>
+    <tr>
+        <td>Credit Card Number: </td>
+        <td>@ViewBag.ccnumber</td>
+    </tr>
+</table>
+
+@Html.ActionLink("Back to Products", "Index", "Products", new { }, new { })
